@@ -1,0 +1,19 @@
+# Contributing to Google Agent Skills
+
+Thank you for your interest in the Network Observability Tutorials repository!
+
+## Our Contribution Policy
+
+At this time, **we are not accepting external pull requests or code
+contributions.** To ensure the technical accuracy and architectural
+alignment, all tutorials must undergo a internal verification and approval process by Google teams.
+
+## How You Can Help
+
+While we do not accept direct code contributions, your feedback is invaluable
+for improving the quality of these tutorials:
+
+*   **Report Issues:** If you find a bug please
+    [open an issue](https://github.com/GoogleCloudPlatform/network-observability-tutorials/issues).
+
+*   **Request New Tutorial:** If there is a Cloud Networking product you would like to see covered, please let us know via the issue tracker.
