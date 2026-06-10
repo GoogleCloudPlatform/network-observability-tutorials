@@ -26,14 +26,10 @@ if ! command -v gcloud &> /dev/null; then
 fi
 echo "✅ gcloud CLI is installed."
 
-# 2. Check active project
-PROJECT_ID=$(gcloud config get-value project 2>/dev/null)
-if [ -z "$PROJECT_ID" ]; then
-    echo "Error: No active Google Cloud project selected."
-    echo "Please set your project using: gcloud config set project [PROJECT_ID]"
-    exit 1
+PROJECT_ID=$(gcloud config get-value project 2>/dev/null || true)
+if [ -n "$PROJECT_ID" ]; then
+    echo "✅ Active project: $PROJECT_ID"
 fi
-echo "✅ Active project: $PROJECT_ID"
 
 # 3. Check Node.js and npx (required for skills CLI)
 if ! command -v npx &> /dev/null; then
@@ -58,40 +54,36 @@ REQUIRED_APIS=(
     "monitoring.googleapis.com"
 )
 
-echo "Checking required APIs..."
-ENABLED_APIS=$(gcloud services list --enabled --format="value(config.name)" 2>/dev/null || true)
+if [ -n "$PROJECT_ID" ]; then
+    echo "Checking required APIs..."
+    ENABLED_APIS=$(gcloud services list --enabled --format="value(config.name)" 2>/dev/null || true)
 
-if [ -z "$ENABLED_APIS" ]; then
-    echo "Warning: Could not retrieve enabled services list. Attempting to verify by enabling..."
-    for api in "${REQUIRED_APIS[@]}"; do
-        gcloud services enable "$api"
-    done
-else
-    for api in "${REQUIRED_APIS[@]}"; do
-        if echo "$ENABLED_APIS" | grep -q "^$api$"; then
-            echo "  ✅ $api is enabled."
-        else
-            echo "  ❌ $api is NOT enabled."
-            echo "Enabling $api..."
-            gcloud services enable "$api"
-        fi
-    done
+    if [ -z "$ENABLED_APIS" ]; then
+        echo "Warning: Could not retrieve enabled services list. Attempting to verify by enabling..."
+        for api in "${REQUIRED_APIS[@]}"; do
+            gcloud services enable "$api" --quiet
+        done
+    else
+        for api in "${REQUIRED_APIS[@]}"; do
+            if echo "$ENABLED_APIS" | grep -q "^$api$"; then
+                echo "  ✅ $api is enabled."
+            else
+                echo "  ❌ $api is NOT enabled."
+                echo "Enabling $api..."
+                gcloud services enable "$api" --quiet
+            fi
+        done
+    fi
 fi
 
 # 6. Install the Google Cloud Network Observability Skill
 echo "Installing Google Cloud Network Observability skill..."
-if npx skills add google/skills --skill google-cloud-networking-observability; then
+if npx -y skills add google/skills --skill google-cloud-networking-observability -y; then
     echo "  ✅ Google Cloud Network Observability skill is installed."
 else
     echo "  ❌ Failed to install Google Cloud Network Observability skill."
     exit 1
 fi
 
-# 7. Remind user about env vars (we cannot easily export to parent shell from here if run as script, but we can print it)
-echo ""
-echo "To configure your environment for Gemini CLI, please run:"
-echo "  export GOOGLE_CLOUD_PROJECT=$PROJECT_ID"
-echo "  gcloud auth application-default login"
-echo ""
 echo "Environment verification complete!"
 
