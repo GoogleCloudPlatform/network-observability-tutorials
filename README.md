@@ -13,7 +13,7 @@ These tutorials leverage specialized, open-source agentic skills to allow you to
 
 | Tutorial | Description | Open in Cloud Shell |
 | :--- | :--- | :--- |
-| [VPC Flow Logs Cost Estimator](vpc-flowlogs-cost-estimator) | Estimate the cost of enabling VPC Flow Logs in your project using Gemini CLI and the Network Observability skill. | [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/GoogleCloudPlatform/network-observability-tutorials&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=vpc-flowlogs-cost-estimator/tutorial.md) |
+| [VPC Flow Logs Cost Estimator](vpc-flowlogs-cost-estimator) | Estimate the cost of enabling VPC Flow Logs in your project using Gemini CLI and the Network Observability skill. | [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/GoogleCloudPlatform/network-observability-tutorials&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=vpc-flowlogs-cost-estimator/tutorial.md&show=terminal) |
 
 ## Contributing
 
