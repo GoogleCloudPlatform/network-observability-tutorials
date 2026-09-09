@@ -38,13 +38,14 @@ if ! command -v npx &> /dev/null; then
 fi
 echo "✅ npx is installed."
 
-# 4. Check Gemini CLI
-if ! command -v gemini &> /dev/null; then
-    echo "Warning: Gemini CLI ('gemini') is not installed."
-    echo "Installing Gemini CLI globally..."
-    npm install -g @google/gemini-cli
+# 4. Check Antigravity CLI
+if ! command -v agy &> /dev/null; then
+    echo "Warning: Antigravity CLI ('agy') is not installed."
+    echo "Installing Antigravity CLI..."
+    curl -fsSL https://antigravity.google/cli/install.sh | bash
+    export PATH="$HOME/.local/bin:$PATH"
 else
-    echo "✅ Gemini CLI is installed."
+    echo "✅ Antigravity CLI ('agy') is installed."
 fi
 
 # 5. Check required APIs
@@ -78,7 +79,7 @@ fi
 
 # 6. Install the Google Cloud Network Observability Skill
 echo "Installing Google Cloud Network Observability skill..."
-if npx -y skills add google/skills --skill google-cloud-networking-observability -y; then
+if npx -y skills add google/skills --skill google-cloud-networking-observability --agent antigravity -y; then
     echo "  ✅ Google Cloud Network Observability skill is installed."
 else
     echo "  ❌ Failed to install Google Cloud Network Observability skill."
