@@ -7,13 +7,14 @@ These tutorials leverage specialized, open-source agentic skills to allow you to
 ## Before you begin
 
 1.  You'll need access to a Google Cloud Platform (GCP) account and project. [Sign up for a free GCP trial account](https://console.cloud.google.com/freetrial).
-2.  Ensure you have the necessary permissions to access the networking resources in your project (e.g., VPC, Flow Logs).
+2.  Ensure you have the necessary permissions to access the networking resources in your project (e.g., VPC, Flow Logs, Cloud Network Insights).
 
 ## Tutorials
 
 | Tutorial | Description | Open in Cloud Shell |
 | :--- | :--- | :--- |
-| [VPC Flow Logs Cost Estimator](vpc-flowlogs-cost-estimator) | Estimate the cost of enabling VPC Flow Logs in your project using Antigravity CLI and the Network Observability skill. | [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?show=terminal&cloudshell_git_repo=https://github.com/GoogleCloudPlatform/network-observability-tutorials&cloudshell_git_branch=main&cloudshell_tutorial=vpc-flowlogs-cost-estimator/tutorial.md) |
+| [VPC Flow Logs Cost Estimator](vpc-flowlogs-cost-estimator/tutorial.md) | Estimate the cost of enabling VPC Flow Logs in your project using Antigravity CLI and the Network Observability skill. | [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?show=terminal&cloudshell_git_repo=https://github.com/GoogleCloudPlatform/network-observability-tutorials&cloudshell_git_branch=main&cloudshell_tutorial=vpc-flowlogs-cost-estimator/tutorial.md) |
+| [Cloud Network Insights Getting Started](cloud-network-insights-getting-started/tutorial.md) | Onboard to Cloud Network Insights, deploy a Monitoring Point, and configure starter monitoring policies using Antigravity CLI and the Cloud Network Insights skill. | [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?show=terminal&cloudshell_git_repo=https://github.com/GoogleCloudPlatform/network-observability-tutorials&cloudshell_git_branch=main&cloudshell_tutorial=cloud-network-insights-getting-started/tutorial.md) |
 
 ## Contributing
 
